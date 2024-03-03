@@ -7,7 +7,7 @@ struct ppm_pixel {
   unsigned char g;
   unsigned char b;
 };
-/*Fonction permettant d'initialiser les couleur dans une variable de type ppm_pixel*/
+/*Fonction permettant d'initialiser les couleurs dans une variable de type ppm_pixel*/
 static inline void ppm_setpixel(struct ppm_pixel *px, unsigned char r,
                                 unsigned char g, unsigned char b) {
   px->r = r;
@@ -21,6 +21,7 @@ struct ppm_image {
   unsigned int height;
   struct ppm_pixel *px;
 };
+
 /*Cette fonction permet l'initialisation d'une image*/
 int ppm_image_init(struct ppm_image *im, int w, int h);
 
