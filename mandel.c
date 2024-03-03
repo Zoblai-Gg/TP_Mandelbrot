@@ -9,7 +9,47 @@
  
 #define SIZEX 1500
 #define SIZEY 1500
- 
+struct col
+{
+    int r;
+    int g;
+    int b;
+};
+
+struct col getcol( int val , int max )
+{
+    double q = (double)val/(double)max;
+
+    struct col c = { 0, 0, 0 };
+
+    if( q < 0.25 )
+    {
+        c.r = ( q * 4.0 ) * 255.0;
+        c.b = 255;
+    }
+    else if( q < 0.5 )
+    {
+        c.b = 255;
+        c.g = 255;
+        c.r = (q-0.25)*4.0*255.0;
+
+    }
+    else if( q < 0.75 )
+    {
+        c.b = 255;
+        c.r = 255;
+        c.g = 255.0 - (q-0.5)*4.0*255.0;
+    }
+    else
+    {
+        c.b = 255-(q-0.75)*4.0*255.0;
+        c.g = 0;
+        c.r = 255;
+    }
+
+    return c;
+}
+
 double cx( int x )
 {
     /* -2 ---> 1 */
@@ -54,8 +94,10 @@ int main(int argc, char *argv[])
                 iter++;
             }
  
-            int grey = colref*log(iter);
-            ppm_image_setpixel(&im, i,j, grey, grey , grey );
+            //int grey = colref*log(iter);
+            //ppm_image_setpixel(&im, i,j, grey, grey , grey );
+            struct col cc = getcol( log(iter), colref );
+            ppm_image_setpixel(&im, i,j, cc.r, cc.g , cc.b );
         }
     }
  
