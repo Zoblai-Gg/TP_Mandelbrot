@@ -1,6 +1,6 @@
 # Fractale de Mandelbrot
 
-Ceci est est projet en langage C qui permet de générer une image contenant le fractale de mandelbrot
+Ceci est projet en langage C qui permet de générer une image contenant le fractale de mandelbrot
 
 ## Pour compiler et exécuter
 
